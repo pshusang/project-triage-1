@@ -17,8 +17,8 @@ INSERT INTO Patient (patientGuid, firstName, lastName, sexAtBirth, dob) VALUES
 CREATE TABLE PatientVisit (
     visitID INTEGER PRIMARY KEY AUTO_INCREMENT,
     patientGuid VARCHAR(64) UNIQUE,
-    visitDescription TEXT,
-    visitDateUtc DATETIME DEFAULT CURRENT_TIMESTAMP,
-    priority ENUM('Low','Medium','High'),
+    visitDescription TEXT NOT NULL DEFAULT,
+    visitDateUtc DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    priority ENUM('Low','Medium','High') NOT NULL DEFAULT,
     FOREIGN KEY patientGuid References Patient(patientGuid)
 );
