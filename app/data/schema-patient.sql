@@ -14,11 +14,14 @@ INSERT INTO Patient (patientGuid, firstName, lastName, sexAtBirth, dob) VALUES
 ("SOME-UNIQUE-ABCDE1", "J", "Doe", "1950",  ""),
 ("SOME-DUMMY-DATA", "Pepper", "Potts", "1990-01-31",  "F");
 
-CREATE TABLE PatientVisit (
+CREATE TABLE PatientVisit
+(
     visitID INTEGER PRIMARY KEY AUTO_INCREMENT,
     patientGuid VARCHAR(64) UNIQUE,
-    visitDescription TEXT NOT NULL DEFAULT,
+    visitDescription TEXT NOT NULL,
     visitDateUtc DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    priority ENUM('Low','Medium','High') NOT NULL DEFAULT,
-    FOREIGN KEY patientGuid References Patient(patientGuid)
+    priority ENUM('Low','Medium','High') NOT NULL DEFAULT 'Low'
 );
+
+INSERT INTO PatientVisit (visitID, patientGuid, visitDescription) VALUES
+(1, 'SOME-REALLY-LONG-1234', 'Anxiety from D&S');
