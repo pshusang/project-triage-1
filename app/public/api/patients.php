@@ -1,6 +1,6 @@
 <?php
 
-// Step 1: Get a datase connection from our help class
+// Step 1: Get a database connection from our help class
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
