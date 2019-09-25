@@ -4,7 +4,7 @@
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$stmt = $db->prepare('SELECT * FROM PatientVisit');
+$stmt = $db->prepare('SELECT * FROM Patient p, PatientVisit pv where p.patientGuid = pv.patientGuid');
 //Take SQL code and prepare it into a string
 $stmt->execute();
 //Statement object run the query and it has the access to the return data
