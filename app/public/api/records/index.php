@@ -4,9 +4,17 @@
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
+if (isset($_GET['guid'])) //logic to get one when needed or all of them
+  {
+  $stmt = $db->prepare('SELECT * FROM Patient'
+  where patientGuid = ?);
+  }
+else
+  {
 $stmt = $db->prepare('SELECT * FROM Patient');
 //Take SQL code and prepare it into a string
 $stmt->execute();
+  }
 //Statement object run the query and it has the access to the return data
 $patients = $stmt->fetchAll();
 //Fetch the result of the query
